@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        <div class="logo-circle">A+</div>
+        <h2>Resume Analyzer</h2>
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Scan. Score. Stand Out.</h1>
+
+    <p>
+        Upload your resume and receive ATS-aware feedback instantly.
+    </p>
+
+</section>
+
+
+<main class="container">
+<form action="/api/analyze" method="POST" enctype="multipart/form-data"></form>
+    <div class="input-grid">
+
+        <!-- Upload Resume -->
+
+        <div class="card">
+
+            <h3>Upload Resume</h3>
+
+            <input
+    type="file"
+    id="fileInput"
+    hidden
+    accept=".pdf,.docx,.txt">
+
+            <div
+                id="dropzone"
+                class="upload-box">
+                <button
+                    id="browseBtn"
+                    type="button">
+                    Browse File
+                </button>
+
+            </div>
+
+            <div
+                id="fileChosen"
+                class="selected-file"
+                hidden>
+
+                <span id="fileName"></span>
+
+                <button
+                    id="clearFile"
+                    type="button">
+                    ×
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Job Description -->
+
+        <div class="card">
+
+            <h3>Job Description (Optional)</h3>
+
+            <textarea
+                id="jobDescription"
+                name="job_description"
+                placeholder="Paste job description here..."></textarea>
+
+        </div>
+
+    </div>
+
+    <div class="button-area">
+
+     <button id="analyzeBtn" type="submit" disabled>
+    Analyze Resume
+</button>
+
+    </div>
+
+    <!-- Error -->
+
+    <p
+        id="errorMsg"
+        style="text-align:center;color:#b3362d;margin-bottom:20px;"
+        hidden>
+    </p>
+
+    <!-- Results -->
+
+    <section
+        id="resultsCard"
+        class="results-card"
+        hidden>
+
+        <div class="result-top">
+
+            <div class="score-circle">
+
+                <span id="scoreNumber">0</span>
+
+                <small>/100</small>
+
+            </div>
+
+            <div class="score-text">
+
+                <h2>Resume Analysis</h2>
+
+                <p id="summaryText">
+                    Your analysis will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="columns">
+
+            <div>
+
+                <h3>Strengths</h3>
+
+                <ul id="strengthsList"></ul>
+
+            </div>
+
+            <div>
+
+                <h3>Improvements</h3>
+
+                <ul id="improvementsList"></ul>
+
+            </div>
+
+        </div>
+        <div
+            id="keywordsBlock"
+            hidden>
+
+            <h3>Matched Keywords</h3>
+
+            <div
+                id="matchedChips"
+                class="chips">
+            </div>
+
+            <h3>Missing Keywords</h3>
+
+            <div
+                id="missingChips"
+                class="chips">
+            </div>
+
+        </div>
+
+    </section>
+</form>
+</main>
+
+<footer>
+
+    Built with Flask • Resume Analyzer
+
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

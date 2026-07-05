@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+<body>
+
+<main class="result-container">
+
+    <div class="top-card">
+
+        <div class="score-card">
+
+            <div class="score-circle">
+                <span>{{ result.overall_score }}</span>
+                <small>/100</small>
+            </div>
+
+            <div class="score-info">
+                <h1>Resume Analysis</h1>
+                <p>{{ result.feedback.summary }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="middle-grid">
+
+        <div class="info-card">
+
+            <h2>✅ Strengths</h2>
+
+            <ul>
+                {% for item in result.feedback.strengths %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        <div class="info-card">
+
+            <h2>⚠ Improvements</h2>
+
+            <ul>
+                {% for item in result.feedback.improvements %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    {% if result.details.keyword_match %}
+
+    <div class="keyword-card">
+
+        <div>
+
+            <h3>Matched Keywords</h3>
+
+            <div class="chips">
+
+                {% for word in result.details.keyword_match.matched[:3] %}
+                <span class="chip good">{{ word }}</span>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <h3>Missing Keywords</h3>
+
+            <div class="chips">
+
+                {% for word in result.details.keyword_match.missing[:3] %}
+                <span class="chip bad">{{ word }}</span>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+    <div class="bottom-btn">
+
+        <a href="/" class="again-btn">
+            Analyze Another Resume
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>
