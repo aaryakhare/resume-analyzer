@@ -475,48 +475,98 @@ footer{
     }
 
 }
+@media (max-width:600px){
 
-/* MOBILE */
-
-@media(max-width:600px){
-
-    .hero h1{
-
-        font-size:30px;
-
+    body{
+        font-size:14px;
     }
 
-    .header{
+    .container,
+    .result-container{
+        width:100%;
+        max-width:100%;
+        padding:8px;
+        margin:0 auto;
+    }
 
-        justify-content:center;
-
+    .results-card{
+        padding:14px;
+        border-radius:12px;
     }
 
     .result-top{
-
-        flex-direction:column;
-
-        text-align:center;
-
+        gap:12px;
+        margin-bottom:16px;
     }
 
     .score-circle{
-
-        width:90px;
-        height:90px;
-
+        width:72px;
+        height:72px;
+        border-width:5px;
     }
 
     .score-circle span{
-
-        font-size:28px;
-
+        font-size:24px;
     }
 
-    textarea{
-
-        height:150px;
-
+    .score-circle small{
+        font-size:10px;
     }
 
+    .score-text h2{
+        font-size:18px;
+        margin-bottom:4px;
+    }
+
+    .score-text p{
+        font-size:13px;
+        line-height:1.35;
+    }
+
+    .columns{
+        gap:12px;
+        margin-bottom:16px;
+    }
+
+    .columns h3{
+        font-size:15px;
+        margin-bottom:8px;
+    }
+
+    .columns ul{
+        padding-left:16px;
+    }
+
+    .columns li{
+        font-size:13px;
+        line-height:1.35;
+        margin-bottom:5px;
+    }
+
+    #keywordsBlock h3{
+        font-size:15px;
+        margin-bottom:6px;
+    }
+
+    .chips{
+        gap:6px;
+        margin:8px 0 14px;
+    }
+
+    .chips span{
+        font-size:11px;
+        padding:4px 8px;
+    }
+
+    #analyzeBtn,
+    .again-btn{
+        width:100%;
+        padding:12px;
+        font-size:14px;
+    }
+
+    footer{
+        padding:16px 10px;
+        font-size:12px;
+    }
 }
