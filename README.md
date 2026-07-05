@@ -1,94 +1,154 @@
-# Resume Analyzer
+# 📄 A+ Resume Analyzer
 
-A full-stack web app that scores a resume on structure, wording, and measurable impact, matches it against a target job description, and gives AI-generated feedback with rewritten bullet points.
+An AI-powered ATS Resume Analyzer built with Flask that evaluates resumes and provides actionable feedback to help users improve their chances of passing Applicant Tracking Systems (ATS).
 
-**Live demo:** _add your deployed URL here after deployment_
+---
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![Flask](https://img.shields.io/badge/Flask-3.0-black)
-![License](https://img.shields.io/badge/license-MIT-green)
+## ✨ Features
 
-## Features
+* 📄 Upload PDF, DOCX, or TXT resumes
+* 🤖 ATS-aware resume analysis
+* 📊 Resume score out of 100
+* ✅ Highlights resume strengths
+* ⚠️ Identifies areas for improvement
+* 🔑 Keyword matching with job descriptions
+* 📱 Fully responsive design for desktop and mobile
+* 🎨 Clean and modern user interface
+* 🔒 5 MB file upload limit
 
-- **Drag-and-drop upload** for PDF, DOCX, or TXT resumes
-- **Rule-based scoring engine** (always runs, no API key required) checking:
-  - Contact info completeness (email, phone, LinkedIn/GitHub)
-  - Presence of core resume sections
-  - Use of strong action verbs vs. weak/passive phrasing
-  - Quantified, measurable achievements
-  - Resume length
-  - Keyword match against a pasted job description
-- **AI-powered feedback layer** using the Claude API: a plain-language summary, strengths, improvements, and rewritten bullet points -- with automatic, transparent fallback to the rule-based feedback if no API key is configured or the request fails
-- **Fully responsive UI** built with vanilla HTML/CSS/JS, no frontend framework or build step
-- **Export report** button for a print-friendly version of the results
-- Nothing is stored: files are processed in memory for a single request and discarded
+---
 
-## Tech stack
+## 🛠️ Built With
 
-| Layer | Choice |
-|---|---|
-| Backend | Python, Flask, Gunicorn |
-| Resume parsing | PyPDF2, python-docx |
-| AI feedback | Anthropic Claude API (optional) |
-| Frontend | HTML5, CSS3 (custom properties, no framework), vanilla JS |
-| Deployment | Render (free tier) |
+* Python
+* Flask
+* HTML5
+* CSS3
+* JavaScript
+* Jinja2
+* PyPDF2
+* python-docx
+* Anthropic Claude API (Optional AI enhancement)
 
-## Project structure
+---
+
+## 📂 Project Structure
 
 ```
 resume-analyzer/
-├── app.py                  # Flask routes and API
-├── utils/
-│   ├── parser.py           # Text extraction from PDF/DOCX/TXT
-│   └── analyzer.py         # Rule-based scoring + Claude API integration
-├── templates/
-│   └── index.html
-├── static/
-│   ├── css/style.css
-│   └── js/script.js
+│
+├── app.py
 ├── requirements.txt
-├── Procfile                # gunicorn start command for deployment
-├── render.yaml             # one-click Render deployment config
-└── .env.example
+├── .env
+│
+├── templates/
+│   ├── index.html
+│   └── result.html
+│
+├── static/
+│   ├── css/
+│   │   ├── style.css
+│   │   └── result.css
+│   │
+│   └── js/
+│       └── script.js
+│
+├── utils/
+│   ├── analyzer.py
+│   └── parser.py
+│
+└── README.md
 ```
 
-## Running locally
+---
+
+## 🚀 Installation
+
+Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/resume-analyzer.git
+git clone https://github.com/your-username/resume-analyzer.git
+```
+
+Move into the project folder
+
+```bash
 cd resume-analyzer
+```
 
-python3 -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+Create a virtual environment
 
+```bash
+python -m venv venv
+```
+
+Activate the virtual environment
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+### macOS/Linux
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-cp .env.example .env            # optional: add ANTHROPIC_API_KEY to enable AI feedback
+Run the application
 
+```bash
 python app.py
 ```
 
-Visit `http://localhost:5000`.
-
-The app works fully without an API key -- it just uses rule-based feedback instead of AI-generated feedback. To enable AI feedback, get a key from the [Anthropic Console](https://console.anthropic.com/) and add it to `.env`:
+Open your browser and visit
 
 ```
-ANTHROPIC_API_KEY=sk-ant-...
+http://127.0.0.1:5000
 ```
 
-## Deployment
+---
 
-This project deploys for free on [Render](https://render.com):
+## 📸 Screenshots
 
-1. Push this repo to GitHub (see below).
-2. On Render, click **New > Web Service** and connect the repo. Render will detect `render.yaml` automatically.
-3. Add your `ANTHROPIC_API_KEY` as an environment variable in the Render dashboard (optional).
-4. Deploy. Render gives you a live `.onrender.com` URL.
+### Home Page
 
-## How it's scored
+*Add a screenshot here.*
 
-Each category is scored 0-100 and combined into a weighted overall score. When a job description is provided, keyword match is included and the other weights shrink proportionally so the score stays meaningful for that specific role.
+### Analysis Result
 
-## License
+*Add a screenshot here.*
 
-MIT
+---
+
+## 📌 Future Improvements
+
+* Animated score ring
+* Resume rewrite suggestions
+* Downloadable PDF report
+* Dark mode
+* Resume history
+* Enhanced ATS scoring
+
+---
+
+## 👨‍💻 Author
+
+**Aarya Khare**
+
+B.Tech Computer Science (Artificial Intelligence)
+
+Technocrats Institute of Technology, Bhopal
+
+---
+
+## 📄 License
+
+This project is created for educational and portfolio purposes.
